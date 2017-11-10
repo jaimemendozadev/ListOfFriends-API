@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
+const Router = require('./Router');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
+app.use(morgan('tiny'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use('/api', Router);
 
-app.get('/', (req, res) => {
-  res.send('<h1>Hello world!</h1>');
-});
 
 module.exports = app;
