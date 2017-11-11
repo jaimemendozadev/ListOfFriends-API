@@ -5,9 +5,10 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const conn = require('./DB');
 
+
 conn.on('error', console.error.bind(console, 'connection error:'));  
 
-conn.once('open', function() {
+conn.once('open', () => {
  // Wait for the database connection to establish, then start the app.   
  console.log("We have a DB Connection!");                      
 });
