@@ -1,14 +1,14 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const secret = process.env.SECRET;
+const JWTSECRET = process.env.JWTSECRET;
 const jwt = require('jwt-simple');
- 
+
 
 function createJWTForUser(user){
   //sub is short for 'subject' (who the token belongs to)
   let timestamp = new Date().getTime(); //issed at time
 
-  return jwt.encode({sub: user.id, iat: timestamp}, secret);
+  return jwt.encode({sub: user.id, iat: timestamp}, JWTSECRET);
 }
 
 
