@@ -1,35 +1,18 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const secret = process.env.BCRYPT_SECRET;
+const secret = process.env.SECRET;
+const jwt = require('jwt-simple');
+ 
 
+function createJWTForUser(user){
+  //sub is short for 'subject' (who the token belongs to)
+  let timestamp = new Date().getTime(); //issed at time
 
-function hashPassword(user, callback){
-  let unencryptedPW = user.password;
-
-  bcrypt.genSalt(saltRounds, (err, salt) => {
-
-    if (err) {
-      console.log("The error generating the salt is ", err);
-      callback(err);
-    }
-
-    bcrypt.hash(unencryptedPW, salt, null, (err, hash) => {
-      if (err){
-        console.log("The err hashing the PW is ", err);
-      }
-      // Store hash for user in DB
-      user.password = hash;
-      callback();
-    });
-  }); 
-
-
-
-
-  
-
-
+  return jwt.encode({sub: user.id, iat: timestamp}, secret);
 }
+
+
+
 
 function validateEmail(email) {
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -54,6 +37,6 @@ function checkSinginInput(email, password){
 }
 
 module.exports = {
-  hashPassword,
+    createJWTForUser,
   checkSinginInput
 }
