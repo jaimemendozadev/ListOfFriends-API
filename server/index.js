@@ -7,15 +7,13 @@ const conn = require('./DB');
 
 
 conn.on('error', console.error.bind(console, 'connection error:'));  
-
 conn.once('open', () => {
- // Wait for the database connection to establish, then start the app.   
  console.log("We have a DB Connection!");                      
 });
 
 
 
-app.use(morgan('tiny'));
+//app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/api', Router);
