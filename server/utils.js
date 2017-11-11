@@ -1,5 +1,3 @@
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
 const JWTSECRET = process.env.JWTSECRET;
 const jwt = require('jwt-simple');
 
@@ -10,8 +8,6 @@ function createJWTForUser(user){
 
   return jwt.encode({sub: user.id, iat: timestamp}, JWTSECRET);
 }
-
-
 
 
 function validateEmail(email) {
@@ -34,6 +30,6 @@ function checkSinginInput(email, password){
 }
 
 module.exports = {
-    createJWTForUser,
+  createJWTForUser,
   checkSinginInput
 }

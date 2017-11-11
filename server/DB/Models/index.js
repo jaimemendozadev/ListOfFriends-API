@@ -36,6 +36,19 @@ UserSchema.pre('save', function(next){
   });
 });
 
+UserSchema.methods.comparePassword = function(submittedPW, callback){
+  let User = this;
+
+  bcrypt.compare(submittedPW, User.password).then(response => {
+    console.log("The response inside bcrypt compare is ", response)
+    callback(null, response);
+  })
+  .catch(error => {
+    console.log("The error comparing passwords is ", error);
+    callback(error);
+  });
+}
+
 
 const UserModel = mongoose.model('User', UserSchema); 
 

@@ -13,10 +13,10 @@ conn.once('open', () => {
 
 
 
-//app.use(morgan('tiny'));
+app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use('/api', Router);
+app.use(Router);
 
 
 module.exports = app;

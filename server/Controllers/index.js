@@ -2,10 +2,6 @@ const {createJWTForUser, checkSinginInput} = require('../utils.js');
 const User = require('../DB/Models').UserModel;
 
 
-function authenticate(req, res, next){
-  console.log("User authenticated");
-}
-
 function signup(req, res){
   var email = req.body.email;
   var password = req.body.password;
@@ -37,16 +33,15 @@ function signup(req, res){
   }
 }
 
-function login(req, res, next){
-
-}
-
-function encryptPassword(){
-
+function signin(req, res){
+  var user = req.user; //Passport supplies user in req.user from Done() in localStrategy
+  
+  //create token and send to FE
+  res.json({token: createJWTForUser(user)});
+  
 }
 
 module.exports = {
-  authenticate,
   signup,
-  login
+  signin
 }
