@@ -7,7 +7,7 @@ ListOfFriends Backend API is a simple API for storing a List of your friends. Ea
 
 - Initial Setup
 - Create a `.env` File
-- Starting the App
+- Starting the API
 - Created By
 
 ## Initial Setup
@@ -19,6 +19,13 @@ Open up your terminal and clone the repo locally to your computer by running the
 
 You'll need to have installed MongoDB locally on your computer and get the URL for the Database (DB) connection. The easiest way to setup a Mongo Database would be to create a sandbox database on [mLab](https://mlab.com). Consult the [documentation](http://docs.mlab.com/) on signing up and creating a sandbox account. Once you're done, you'll need the actual Database URL for your `.env` file.
 
+The routes currently available on this API are:
+
+```
+GET /api => requires authentication and sends {auth: "success"}
+POST /api/signup => sends back JWT to user
+POST /api/signin => authenticates user and sends back JWT to user
+```
 
 ## Create a `.env` File
 
@@ -44,9 +51,9 @@ The `JWTSECRET` is a random string you create - it can be anything - for creatin
  
 
 
-## Starting the App
+## Starting the API
 
-In the root of the app, run `$ npm install` to install all the app dependencies. Wait until everything finishes loading.
+In the root of the repo, run `$ npm install` to install all the API dependencies. Wait until everything finishes loading.
 
 Run the `$ npm start` command in your terminal to start the API.
 
@@ -60,6 +67,8 @@ and get back a JWT token.
 
 ![.env Screenshot](/img/JWT-screenshot.png?raw=true ".env Screenshot ")  
 
+
+*Note*: When you're playing around with your database, you have the ability to nuke the Users collection in your database to start fresh. In your terminal, run `$ npm run dropdb` to drop all the Users you created in the database. You'll then be able to reseed the database with new Users.
 
 ## Created By
 
