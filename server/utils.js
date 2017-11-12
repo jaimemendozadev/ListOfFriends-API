@@ -29,6 +29,9 @@ function checkSinginInput(email, password){
   return true;
 }
 
+
+
+
 module.exports = {
   createJWTForUser,
   checkSinginInput
