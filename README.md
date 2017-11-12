@@ -11,7 +11,7 @@ ListOfFriends Backend API is a simple API for storing a List of your friends. Ea
 - Created By
 
 ## Initial Setup
-The API is currently accessible at: `https://list-of-friends-api.herokuapp.com/`
+The API is currently accessible at: `https://list-of-friends-api.herokuapp.com/api`
 
 But you can clone the repo and run your own version of the API locally.
 
