@@ -7,6 +7,7 @@ function signup(req, res){
   var password = req.body.password;
   var check = checkSinginInput(email, password);
   
+  console.log("the req for signup is  ", email, password)
 
   if (check != false) {
     res.send({error: "You need a valid email and a 6 character length password."});

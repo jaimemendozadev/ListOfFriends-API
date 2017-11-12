@@ -14,8 +14,6 @@ conn.once('open', () => {
 
 
 app.use(cors());
-app.use(express.static(path.resolve(__dirname, '../public')));
-
 
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
