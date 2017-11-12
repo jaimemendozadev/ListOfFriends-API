@@ -7,11 +7,9 @@ const path = require('path');
 const requireAuth = passport.authenticate('jwt', {session: false});
 const requireSignIn = passport.authenticate('local', {session: false});
 
-
-
 //requireAuth assumes user already has JWT in req headers
 Router.get('/', requireAuth, (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../../public', 'index.html'));
+  res.send({auth: "success"});
 });
 
 //sends back JWT to user

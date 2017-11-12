@@ -17,7 +17,7 @@ app.use(express.static(path.resolve(__dirname, '../public')));
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(Router);
+app.use('/api', Router);
 
 
 module.exports = app;
